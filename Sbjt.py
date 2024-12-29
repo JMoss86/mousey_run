@@ -4,10 +4,13 @@ from NAME import SBJT, STTS as S
 
 class Sbjt(Elem):
     _NAME = SBJT
+    _RANK = 0
 
     def __init__(self, name: SBJT) -> None:
         self._name = name
         self._stts = None
+        self._rank = Sbjt._RANK
+        Sbjt._RANK += 1
 
     def __str__(self) -> str:
         return f'{super().__str__()}{'' if not self.stts else f' {self.stts}'}'
@@ -27,6 +30,10 @@ class Sbjt(Elem):
     @property
     def stts(self) -> list[S]:
         return rtn(self._stts)
+
+    @property
+    def rank(self) -> int:
+        return self._rank
 
     @_name.setter
     def _name(self, name: SBJT) -> None:
@@ -105,3 +112,6 @@ class Sbjt(Elem):
 
     def is_flud(self) -> bool:
         return S.FLOODED in self.stts
+
+def rank(sbjt: Sbjt) -> int | None:
+    return sbjt.rank if sbjt else None

@@ -4,13 +4,10 @@ from Sbjt import Sbjt as T
 class Town(T):
     _NAME = TOWN
     _TOKN = T
-    _RANK = 0
 
     def __init__(self, name: TOWN, tkns: list[T] | None = None) -> None:
         super().__init__(name)
         self._tkns = tkns
-        self._rank = Town._RANK
-        Town._RANK += 1
 
     def __str__(self) -> str:
         return f'{super().__str__()}{'' if not self.tkns else f':\n{self.tkns}'}'
@@ -26,10 +23,6 @@ class Town(T):
     @property
     def tkns(self) -> list[T]:
         return self._tkns
-
-    @property
-    def rank(self) -> int:
-        return self._rank
 
     @_tkns.setter
     def _tkns(self, tkns: list[T]) -> None:
@@ -72,6 +65,3 @@ class Town(T):
 
     def is_trek(self) -> bool:
         return False
-
-def rnk(town: Town) -> int | None:
-    return town.rank if town else None

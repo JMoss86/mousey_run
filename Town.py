@@ -1,4 +1,4 @@
-from Template_Tokn import Tokn, rnk
+from Template_Tokn import Tokn, rank
 from Template_Town import Town as T
 
 ## Base Town; Spreads infection to all Tokens. ##
@@ -12,7 +12,7 @@ class Town(T):
     @T._tkns.setter
     def _tkns(self, tkns: list[Tokn]) -> None:
         T._tkns.fset(self, tkns)
-        self.__tkns.sort(key = lambda t: rnk(t))
+        self.__tkns.sort(key = lambda t: rank(t))
         if self.is_infc() or any(tokn.is_infc() for tokn in self.tkns): self.add_infc()
         for tokn in self.tkns:
             tokn.set_town(self)

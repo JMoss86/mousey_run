@@ -1,18 +1,15 @@
 from NAME import STTS as S, TOKN
-from Sbjt import Sbjt as T
+from Sbjt import Sbjt as T, rank
 
 class Tokn(T):
     _NAME = TOKN
     _TOWN = T
-    _RANK = 0
 
     def __init__(self, name: TOKN, lvht: list[list[T]] | None = None) -> None:
         super().__init__(name)
         self._lvht = lvht
         self._town = None
         self._infc = 0
-        self._rank = Tokn._RANK
-        Tokn._RANK += 1
 
     @property
     def _lvht(self) -> list[list[T]]:
@@ -44,10 +41,6 @@ class Tokn(T):
     @property
     def town(self) -> T:
         return self._town
-
-    @property
-    def rank(self) -> int:
-        return self._rank
 
     @_lvht.setter
     def _lvht(self, lvht: list[list[T]]) -> None:
@@ -129,6 +122,3 @@ class Tokn(T):
 
     def kill(self) -> None:
         self._del_name()
-
-def rnk(tokn: Tokn) -> int | None:
-    return tokn.rank if tokn else None
