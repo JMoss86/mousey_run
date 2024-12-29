@@ -83,7 +83,7 @@ class Tknd(Tspc):
         if not self.is_infc(): super().move(town)
         else: self.hndl_infc()
 
-## Friend Tokens: Looking to make friends with an agent, if their Contact is in the same same Town. ##
+## Friend Tokens: Looking to make Friends with an agent, if their Contact is in the same same Town. ##
 class Tfrn(Tknd): # TODO #
     pass
 
@@ -166,7 +166,7 @@ class Tspy(Tspc):
     def rset(self) -> None:
         self.hndl_infc()
 
-## Panacea Token: Completely cures any infection it encounters, and is then removed. ##
+## Panacea Token: Completely cures any Infection it encounters, and is then removed. ##
 class Tpna(Tspc):
     def add_infc(self) -> None:
         self.sub_infc()
