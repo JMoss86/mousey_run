@@ -7,7 +7,7 @@ class Sbjt(Elem):
 
     def __init__(self, name: SBJT) -> None:
         self._name = name
-        self._stts = []
+        self._stts = None
 
     def __str__(self) -> str:
         return f'{super().__str__()}{'' if not self.stts else f' {self.stts}'}'
