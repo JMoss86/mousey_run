@@ -1,7 +1,7 @@
 from Template_Tokn import Tokn, rnk
 from Template_Town import Town as T
 
-## Base Town; spreads infection to all Tokens. ##
+## Base Town; Spreads infection to all Tokens. ##
 class Town(T):
     _TOKN = Tokn
 
