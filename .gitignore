@@ -1,0 +1,5 @@
+## Just the code, ma'am. ##
+.git/
+.vscode/
+__pycache__/
+items/
