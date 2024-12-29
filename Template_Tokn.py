@@ -43,7 +43,7 @@ class Tokn(T):
         return self._town
 
     @_lvht.setter
-    def _lvht(self, lvht: list[list[T]]) -> None:
+    def _lvht(self, lvht: list[list[T]] | None) -> None:
         love, hate = self._slce_list(lvht)
         if not (love or hate): self.add_agnt()
         elif not (love and hate): raise ValueError()

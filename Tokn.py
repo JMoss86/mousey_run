@@ -119,7 +119,7 @@ class Tmyr(Tknd):
         return self._foe[0]
 
     @_frfo.setter
-    def _frfo(self, frfo: list[list[T]]) -> None:
+    def _frfo(self, frfo: list[list[T]] | None) -> None:
         frn, foe = self._slce_list(frfo)
         if (not frn) != (not foe): raise ValueError()
         self.__frfo = self._cmbn_list(self._vldt_list(frn, Tokn), self._vldt_list(foe, Tokn))
