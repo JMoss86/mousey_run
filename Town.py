@@ -7,7 +7,7 @@ class Town(T):
 
     @property
     def tkns(self) -> list[Tokn]:
-        return super().tkns
+        super().tkns
 
     @T._tkns.setter
     def _tkns(self, tkns: list[Tokn]) -> None:

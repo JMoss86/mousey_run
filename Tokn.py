@@ -7,15 +7,15 @@ class Tokn(T):
 
     @property
     def love(self) -> Town:
-        return super().love
+        super().love
 
     @property
     def hate(self) -> Town:
-        return super().hate
+        super().hate
 
     @property
     def town(self) -> Town:
-        return super().town
+        super().town
 
     def _can_move_to(self, town: Town) -> bool:
         return self.town != self._vldt_elem(town, self._TOWN) and not town.is_lock()

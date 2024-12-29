@@ -29,7 +29,7 @@ class Tokn(T):
 
     @property
     def name(self) -> TOKN:
-        return super()._name
+        super().name
 
     @property
     def love(self) -> T:

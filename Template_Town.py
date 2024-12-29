@@ -18,7 +18,7 @@ class Town(T):
 
     @property
     def name(self) -> TOWN:
-        return super()._name
+        super().name
 
     @property
     def tkns(self) -> list[T]:
