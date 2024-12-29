@@ -119,7 +119,7 @@ class Tmyr(Tknd):
         return self._foe[0]
 
     @_frfo.setter
-    def _frfo(self, frfo: list[list[T]]):
+    def _frfo(self, frfo: list[list[T]]) -> None:
         frn, foe = self._slce_list(frfo)
         if (not frn) != (not foe): raise ValueError()
         self.__frfo = self._cmbn_list(self._vldt_list(frn, Tokn), self._vldt_list(foe, Tokn))
@@ -147,12 +147,12 @@ class Tmyr(Tknd):
     def _at_love(self) -> bool:
         return self.town == self.love
 
-    def rset(self):
+    def rset(self) -> None:
         if not self._at_love() and self.frn: return super().rset()
         self.frn.add_hero()
         super().kill()
 
-    def kill(self):
+    def kill(self) -> None:
         if not self._at_love() and self.foe: self.foe.add_hero()
         super().kill()
 

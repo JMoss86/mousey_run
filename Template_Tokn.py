@@ -121,10 +121,10 @@ class Tokn(T):
     def is_dead(self) -> bool:
         return not self.town
 
-    def move(self, town: T = None):
+    def move(self, town: T = None) -> None:
         pass
 
-    def rset(self):
+    def rset(self) -> None:
         pass
 
     def kill(self) -> None:
