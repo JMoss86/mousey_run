@@ -30,7 +30,7 @@ class TOKN(SBJT):       ## TOKENS ##
     JUSTIN = auto()     ## Guard
     MOUSETRAP = auto()  ## Guard
     TREVER = auto()     ## Guard
-    RABBIT = auto()   ## Token
+    RABBIT = auto()     ## Token
     CHARLES = auto()    ## Token
     CREEK = auto()      ## Token
     PANACEA = auto()    ## Token
