@@ -148,12 +148,12 @@ class Tmyr(Tknd):
         return self.town == self.love
 
     def rset(self):
-        if not self._at_love(): return super().rset()
+        if not self._at_love() and self.frn: return super().rset()
         self.frn.add_hero()
         super().kill()
 
     def kill(self):
-        if not self._at_love(): self.foe.add_hero()
+        if not self._at_love() and self.foe: self.foe.add_hero()
         super().kill()
 
 ## Spy Tokens: Get killed by Agents; run away when they move from where they Love. ##
