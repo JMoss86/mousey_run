@@ -72,3 +72,6 @@ class Town(T):
 
     def is_trek(self) -> bool:
         return False
+
+def rnk(town: Town) -> int | None:
+    return town.rank if town else None
