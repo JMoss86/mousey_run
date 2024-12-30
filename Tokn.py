@@ -18,7 +18,7 @@ class Tokn(T):
         return super().town
 
     def _can_move_to(self, town: Town) -> bool:
-        return self.town != self._vldt_elem(town, self._TOWN) and not town.is_lock()
+        return self.town != self._vldt(town, self._TOWN) and not town.is_lock()
 
     def move(self, town: Town = None) -> None:
         super().move()
@@ -56,7 +56,7 @@ class Tgrd(Tokn):
 
     @_base.setter
     def _base(self, base: Town) -> None:
-        self.__base = self._vldt_elem(base, self._TOWN)
+        self.__base = self._vldt(base, self._TOWN)
 
     def set_base(self, base: Town) -> None:
         self._base = base
@@ -122,15 +122,15 @@ class Tmyr(Tknd):
     def _frfo(self, frfo: list[list[T]] | None) -> None:
         frn, foe = self._slce_list(frfo)
         if (not frn) != (not foe): raise ValueError()
-        self.__frfo = self._cmbn_list(self._vldt_list(frn, Tokn), self._vldt_list(foe, Tokn))
+        self.__frfo = self._cmbn_vldt_list(frn, foe, Tokn)
 
     @_frn.setter
     def _frn(self, frn: list[T]) -> None:
-        self._frfo = [self._vldt_list(frn, Tokn), self._foe]
+        self._frfo = [frn, self._foe]
 
     @_foe.setter
     def _foe(self, foe: list[T]) -> None:
-        self._frfo = [self._frn, self._vldt_list(foe, Tokn)]
+        self._frfo = [self._frn, foe]
 
     def _add_frn(self, frn: T) -> None:
         self._add_elem(frn, '_frn')

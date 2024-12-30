@@ -37,33 +37,33 @@ class Sbjt(Elem):
 
     @_name.setter
     def _name(self, name: SBJT) -> None:
-        self.__name = self._vldt_elem(name, self._NAME)
+        self.__name = self._vldt(name, self._NAME)
 
     @_stts.setter
     def _stts(self, stts: list[S] | None) -> None:
         self.__stts = self._vldt_list(stts, S)
 
-    def _vldt_list(self, elem: Elem | list[Elem] | None, clss: Elem) -> list[Elem]:
-        return self._make_list(self._vldt_elem(elem, clss))
-
-    def _make_list(self, elem: Elem | list[Elem] | None) -> list[Elem]:
-        if not elem: return []
-        return elem if isinstance(elem, list) else [elem]
-
-    def _cmbn_list(self, this: list[Elem] | None, that: list[Elem] | None) -> list[Elem | None]:
-        return [this or [None], that or [None]]
-
-    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem]]:
-        dflt = [None, None]
-        if not elst: return dflt
-        return (elst + dflt)[:2]
-
-    def _vldt_elem(self, elem: Elem | list[Elem] | None, clss: Elem) -> Elem | list[Elem] | None:
+    def _vldt(self, elem: Elem | list[Elem] | None, clss: Elem) -> Elem | list[Elem] | None:
         if not elem: return None
         elif isinstance(elem, list):
             if all(issubclass(type(e), clss) for e in elem): return elem
         elif issubclass(type(elem), clss): return elem
         raise TypeError()
+
+    def _vldt_list(self, elem: Elem | list[Elem] | None, clss: Elem) -> list[Elem]:
+        return self._make_list(self._vldt(elem, clss))
+
+    def _cmbn_vldt_list(self, this: list[Elem] | None, that: list[Elem] | None, clss: Elem) -> list[Elem | None]:
+        return [self._vldt_list(this, clss) or [None], self._vldt_list(that, clss) or [None]]
+
+    def _make_list(self, elem: Elem | list[Elem] | None) -> list[Elem]:
+        if not elem: return []
+        return elem if isinstance(elem, list) else [elem]
+
+    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem]]:
+        dflt = [None, None]
+        if not elst: return dflt
+        return (elst + dflt)[:2]
 
     def _add_elem(self, elem: Elem | list[Elem], attr: str) -> None:
         setattr(self, attr, getattr(self, attr) + self._make_list(elem))

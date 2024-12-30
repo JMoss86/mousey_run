@@ -50,19 +50,19 @@ class Tokn(T):
         love, hate = self._slce_list(lvht)
         if not (love or hate): self.add_agnt()
         elif not (love and hate): raise ValueError()
-        self.__lvht = self._cmbn_list(self._vldt_list(love, self._TOWN), self._vldt_list(hate, self._TOWN))
+        self.__lvht = self._cmbn_vldt_list(love, hate, self._TOWN)
 
     @_love.setter
     def _love(self, love: list[T]) -> None:
-        self._lvht = [self._vldt_list(love, self._TOWN), self._hate]
+        self._lvht = [love, self._hate]
 
     @_hate.setter
     def _hate(self, hate: list[T]) -> None:
-        self._lvht = [self._love, self._vldt_list(hate, self._TOWN)]
+        self._lvht = [self._love, hate]
 
     @_town.setter
     def _town(self, town: T) -> None:
-        self.__town = self._vldt_elem(town, self._TOWN)
+        self.__town = self._vldt(town, self._TOWN)
 
     def _add_love(self, love: T) -> None:
         self._add_elem(love, '_love')
@@ -77,7 +77,7 @@ class Tokn(T):
         self._sub_elem(hate, '_hate')
 
     def set_town(self, town: T) -> None:
-        setattr(self, '_town', self._vldt_elem(town, self._TOWN))
+        setattr(self, '_town', self._vldt(town, self._TOWN))
 
     def del_town(self) -> None:
         if self.town: setattr(self, '_town', None)
