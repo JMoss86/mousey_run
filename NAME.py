@@ -26,8 +26,8 @@ class TOWN(SBJT):       ## TOWNS ##
 
 class TOKN(SBJT):       ## TOKENS ##
     PARTY = auto()      ## Agent/Guard
-    JEZZEBELLE = auto() ## Agent/Token
-    JUSTIN = auto()     ## Guard
+    JEZZEBELLE = auto() ## Agent/Guard :-P
+    JUSTIN = auto()     ## Guard :-P
     MOUSETRAP = auto()  ## Guard
     TREVER = auto()     ## Guard
     RABBIT = auto()     ## Token
