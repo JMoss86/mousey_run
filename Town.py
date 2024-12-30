@@ -1,5 +1,5 @@
-from Template_Tokn import Tokn, rank
-from Template_Town import Town as T
+from T_Tokn import Tokn, rank
+from T_Town import Town as T
 
 ## Base Town; Spreads infection to all Tokens. ##
 class Town(T):
