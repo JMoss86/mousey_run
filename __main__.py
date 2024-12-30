@@ -1,13 +1,13 @@
 import traceback
-from NAME import TOKN, TOWN
+from NAME import TOKN as TK, TOWN as TN
 from Tokn import Tdum, Tfrn, Tgrd, Tmyr, Tokn, Tpna, Tspy
 from Town import Trek
 
 def main():
-    lockh = Trek(TOWN.LOCKHAVEN)
-    elmos = Trek(TOWN.ELMOSS)
-    coppr = Trek(TOWN.COPPERWOOD)
-    rootw = Trek(TOWN.ROOTWALLOW)
+    lockh = Trek(TN.LOCKHAVEN)
+    elmos = Trek(TN.ELMOSS)
+    coppr = Trek(TN.COPPERWOOD)
+    rootw = Trek(TN.ROOTWALLOW)
 
     elmos.add_infc()
 
@@ -15,17 +15,17 @@ def main():
     specl = [rootw, elmos]
 
     agnts = [
-        party := Tgrd(TOKN.PARTY),
-        jezze := Tokn(TOKN.JEZZEBELLE)
+        party := Tgrd(TK.PARTY),
+        jezze := Tokn(TK.JEZZEBELLE)
     ]
     tokns = [
-        justn := Tdum(TOKN.JUSTIN, specl),
-        mtrap := Tgrd(TOKN.MOUSETRAP, stdrd),
-        trevr := Tgrd(TOKN.TREVER, specl),
-        charl := Tmyr(TOKN.CHARLES, stdrd, agnts),
-        rabbt := Tfrn(TOKN.RABBIT, stdrd),
-        creek := Tspy(TOKN.CREEK, stdrd[::-1]),
-        panac := Tpna(TOKN.PANACEA, specl)
+        justn := Tdum(TK.JUSTIN, specl),
+        mtrap := Tgrd(TK.MOUSETRAP, stdrd),
+        trevr := Tgrd(TK.TREVER, specl),
+        charl := Tmyr(TK.CHARLES, stdrd, agnts),
+        rabbt := Tfrn(TK.RABBIT, stdrd),
+        creek := Tspy(TK.CREEK, stdrd[::-1]),
+        panac := Tpna(TK.PANACEA, specl)
     ]
 
     for tgrd in [party, mtrap, trevr]:
