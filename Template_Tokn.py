@@ -4,6 +4,9 @@ from Sbjt import Sbjt as T, rank
 class Tokn(T):
     _NAME = TOKN
     _TOWN = T
+    _INFA = 0
+    _INFB = 5
+
 
     def __init__(self, name: TOKN, lvht: list[list[T]] | None = None) -> None:
         super().__init__(name)
@@ -38,6 +41,7 @@ class Tokn(T):
     @property
     def hate(self) -> T:
         return self._hate[0]
+
     @property
     def town(self) -> T:
         return self._town
@@ -108,8 +112,8 @@ class Tokn(T):
 
     def hndl_infc(self) -> None:
         super().hndl_infc()
-        if self._infc > 3: self.kill()
-        elif self._infc > 0: self._infc += 1
+        if self._infc > self._INFA: self._infc += 1
+        if self._infc > self._INFB: self.kill()
 
     def is_dead(self) -> bool:
         return not self.town

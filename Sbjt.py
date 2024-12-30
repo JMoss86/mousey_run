@@ -40,8 +40,11 @@ class Sbjt(Elem):
         self.__name = self._vldt_elem(name, self._NAME)
 
     @_stts.setter
-    def _stts(self, stts: list[S]) -> None:
+    def _stts(self, stts: list[S] | None) -> None:
         self.__stts = self._vldt_list(stts, S)
+
+    def _vldt_list(self, elem: Elem | list[Elem] | None, clss: Elem) -> list[Elem]:
+        return self._make_list(self._vldt_elem(elem, clss))
 
     def _make_list(self, elem: Elem | list[Elem] | None) -> list[Elem]:
         if not elem: return []
@@ -50,13 +53,10 @@ class Sbjt(Elem):
     def _cmbn_list(self, this: list[Elem] | None, that: list[Elem] | None) -> list[Elem | None]:
         return [this or [None], that or [None]]
 
-    def _slce_list(self, elst: list[Elem] | None) -> tuple[list[Elem] | None, list[Elem] | None]:
+    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem] | None]:
         dflt = [None, None]
         if not elst: return dflt
         return (elst + dflt)[:2]
-
-    def _vldt_list(self, elem: Elem | list[Elem] | None, clss: Elem) -> list[Elem]:
-        return self._make_list(self._vldt_elem(elem, clss))
 
     def _vldt_elem(self, elem: Elem | list[Elem] | None, clss: Elem) -> Elem | list[Elem] | None:
         if not elem: return None

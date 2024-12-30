@@ -1,5 +1,5 @@
 from NAME import STTS as S, TOWN
-from Sbjt import Sbjt as T
+from Sbjt import Sbjt as T, rank
 
 class Town(T):
     _NAME = TOWN
