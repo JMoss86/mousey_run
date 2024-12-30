@@ -60,10 +60,10 @@ class Sbjt(Elem):
 
     def _vldt_elem(self, elem: Elem | list[Elem] | None, clss: Elem) -> Elem | list[Elem] | None:
         if not elem: return None
-        elif not isinstance(elem, list):
-            if not issubclass(type(elem), clss): raise TypeError()
-        elif not (all(issubclass(type(e), clss)) for e in elem): raise TypeError()
-        return elem
+        elif isinstance(elem, list):
+            if all(issubclass(type(e), clss) for e in elem): return elem
+        elif issubclass(type(elem), clss): return elem
+        raise TypeError()
 
     def _add_elem(self, elem: Elem | list[Elem], attr: str) -> None:
         setattr(self, attr, getattr(self, attr) + self._make_list(elem))
