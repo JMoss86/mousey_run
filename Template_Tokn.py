@@ -29,7 +29,7 @@ class Tokn(T):
 
     @property
     def name(self) -> TOKN:
-        super().name
+        return super().name
 
     @property
     def love(self) -> T:
@@ -77,7 +77,7 @@ class Tokn(T):
         setattr(self, '_town', self._vldt_elem(town, self._TOWN))
 
     def del_town(self) -> None:
-        setattr(self, '_town', None)
+        if self.town: setattr(self, '_town', None)
 
     def add_infc(self) -> None:
         super().add_infc()

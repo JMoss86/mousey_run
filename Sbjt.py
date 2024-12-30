@@ -72,7 +72,7 @@ class Sbjt(Elem):
         setattr(self, attr, [e for e in getattr(self, attr) if e not in self._make_list(elem)])
 
     def _del_name(self) -> None:
-        setattr(self, '_name', None)
+        if self.name: setattr(self, '_name', None)
 
     def _add_stts(self, stts: list[S]) -> None:
         self._add_elem(stts, '_stts')
