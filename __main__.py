@@ -1,6 +1,6 @@
 import traceback
 from NAME import TOKN as TK, TOWN as TN
-from Tokn import Tdum, Tfrn, Tgrd, Tmyr, Tokn, Tpna, Tspy
+from Tokn import Tdum, Tfrn, Tgrd, Tmyr, Tpna, Tspy
 from Town import Trek
 
 def main():
@@ -16,7 +16,7 @@ def main():
 
     agnts = [
         party := Tgrd(TK.PARTY),
-        jezze := Tokn(TK.JEZZEBELLE)
+        jezze := Tgrd(TK.JEZZEBELLE)
     ]
     tokns = [
         justn := Tdum(TK.JUSTIN, specl),
@@ -28,7 +28,7 @@ def main():
         panac := Tpna(TK.PANACEA, specl)
     ]
 
-    for tgrd in [party, mtrap, trevr]:
+    for tgrd in [party, jezze, mtrap, trevr]:
         tgrd.set_base(lockh)
 
     lockh.add_tkns([
@@ -44,11 +44,14 @@ def main():
     rootw.add_tkns(rabbt)
 
     def display() -> str: print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
-    def move(tokns: list[Tokn]) -> None:
+    def move() -> None:
         for tokn in tokns:
             tokn.move()
             display()
-    def rset(tokns: list[Tokn]) -> None:
+    def rset() -> None:
+        for agnt in agnts:
+            agnt.rset()
+            display()
         for tokn in tokns:
             tokn.rset()
             display()
@@ -60,39 +63,24 @@ def main():
     display()
     jezze.move(lockh)
     display()
-    move(tokns)
-
-    party.rset()
-    display()
-    jezze.move(lockh)
-    display
-    rset(tokns)
+    move()
+    rset()
     print('~~~~ SPRING END ~~~~')
 
     party.move(coppr)
     display()
     jezze.move(lockh)
     display()
-    move(tokns)
-
-    party.rset()
-    display()
-    jezze.move(lockh)
-    display
-    rset(tokns)
+    move()
+    rset()
     print('~~~~ SUMMER END ~~~~')
 
     party.move(rootw)
     display()
     jezze.move(lockh)
     display()
-    move(tokns)
-
-    party.rset()
-    display()
-    jezze.move(lockh)
-    display
-    rset(tokns)
+    move()
+    rset()
     print('~~~~ AUTUMN END ~~~~')
 
 if __name__ == '__main__':
