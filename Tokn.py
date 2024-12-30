@@ -1,5 +1,5 @@
-from Template_Tokn import Tokn as T, TOKN
-from Template_Town import Town, rank
+from T_Tokn import Tokn as T, TOKN
+from T_Town import Town, rank
 
 ## Base Token: Want to move to where they Love; won't move if Dead. ##
 class Tokn(T):
