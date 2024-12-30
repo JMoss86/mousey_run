@@ -1,4 +1,4 @@
-Created as an exercise inheritance with Python for assistance building a Mouse Guard campaign.
+Created as an exercise in inheritance with Python for assistance building a Mouse Guard campaign.
 * Names and Statuses are special Enums.
 * Subjects have Names and a list of Statuses.
 * Subjects have internal ability to parse, change, and validate their attributes.
