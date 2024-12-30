@@ -43,29 +43,29 @@ def main():
     coppr.add_tkns(trevr)
     rootw.add_tkns(rabbt)
 
-    def display() -> None:
+    def dspl() -> None:
         print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
-    def move_jezze(trek: Trek) -> None:
-        display()
+    def move_jze(trek: Trek) -> None:
+        dspl()
         jezze.move(trek)
-        display()
-    def move() -> None:
+        dspl()
+    def move_tks() -> None:
         for tokn in tokns:
             tokn.move()
-            display()
-    def rset() -> None:
+            dspl()
+    def rset_all() -> None:
         for agnt in agnts:
             agnt.rset()
-            display()
+            dspl()
         for tokn in tokns:
             tokn.rset()
-            display()
+            dspl()
     def run_season(trek: Trek) -> None:
-        move_jezze(trek)
-        move()
-        rset()
+        move_jze(trek)
+        move_tks()
+        rset_all()
 
-    display()
+    dspl()
     print('~~~~ WINTER END ~~~~')
 
     party.move(elmos)
