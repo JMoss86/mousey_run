@@ -56,13 +56,13 @@ class Sbjt(Elem):
     def _cmbn_vldt_list(self, this: list[Elem] | None, that: list[Elem] | None, clss: Elem) -> list[Elem | None]:
         return [self._vldt_list(this, clss) or [None], self._vldt_list(that, clss) or [None]]
 
-    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem]]:
-        if not elst: return [None, None]
-        return (self._make_list(elst) + [None])[:2]
-
     def _make_list(self, elem: Elem | list[Elem] | None) -> list[Elem]:
         if not elem: return []
         return elem if isinstance(elem, list) else [elem]
+
+    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem]]:
+        if not elst: return [None, None]
+        return (self._make_list(elst) + [None])[:2]
 
     def _add_elem(self, elem: Elem | list[Elem], attr: str) -> None:
         setattr(self, attr, getattr(self, attr) + self._make_list(elem))
