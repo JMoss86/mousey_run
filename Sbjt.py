@@ -53,7 +53,7 @@ class Sbjt(Elem):
     def _cmbn_list(self, this: list[Elem] | None, that: list[Elem] | None) -> list[Elem | None]:
         return [this or [None], that or [None]]
 
-    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem] | None]:
+    def _slce_list(self, elst: list[Elem] | None) -> list[list[Elem]]:
         dflt = [None, None]
         if not elst: return dflt
         return (elst + dflt)[:2]
