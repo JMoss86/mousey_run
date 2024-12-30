@@ -43,7 +43,12 @@ def main():
     coppr.add_tkns(trevr)
     rootw.add_tkns(rabbt)
 
-    def display() -> str: print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
+    def display() -> None:
+        print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
+    def move_jezze(trek: Trek) -> None:
+        display()
+        jezze.move(trek)
+        display()
     def move() -> None:
         for tokn in tokns:
             tokn.move()
@@ -55,32 +60,24 @@ def main():
         for tokn in tokns:
             tokn.rset()
             display()
+    def run_season(trek: Trek) -> None:
+        move_jezze(trek)
+        move()
+        rset()
 
     display()
     print('~~~~ WINTER END ~~~~')
 
     party.move(elmos)
-    display()
-    jezze.move(lockh)
-    display()
-    move()
-    rset()
+    run_season(lockh)
     print('~~~~ SPRING END ~~~~')
 
     party.move(coppr)
-    display()
-    jezze.move(lockh)
-    display()
-    move()
-    rset()
+    run_season(lockh)
     print('~~~~ SUMMER END ~~~~')
 
     party.move(rootw)
-    display()
-    jezze.move(lockh)
-    display()
-    move()
-    rset()
+    run_season(lockh)
     print('~~~~ AUTUMN END ~~~~')
 
 if __name__ == '__main__':
