@@ -7,7 +7,6 @@ class Tokn(T):
     _INFA = 0
     _INFB = 5
 
-
     def __init__(self, name: TOKN, lvht: list[list[T]] | None = None) -> None:
         super().__init__(name)
         self._lvht = lvht
