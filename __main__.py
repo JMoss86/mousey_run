@@ -45,10 +45,6 @@ def main():
 
     def dspl() -> None:
         print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
-    def move_jze(trek: Trek) -> None:
-        dspl()
-        jezze.move(trek)
-        dspl()
     def move_tks() -> None:
         for tokn in tokns:
             tokn.move()
@@ -60,24 +56,28 @@ def main():
         for tokn in tokns:
             tokn.rset()
             dspl()
-    def run_season(trek: Trek) -> None:
-        move_jze(trek)
+    def run_season() -> None:
         move_tks()
         rset_all()
+    def jezze_move(trek: Trek) -> None:
+        dspl()
+        jezze.move(trek)
+        dspl()
+        run_season()
 
     dspl()
     print('~~~~ WINTER END ~~~~')
 
     party.move(elmos)
-    run_season(lockh)
+    jezze_move(lockh)
     print('~~~~ SPRING END ~~~~')
 
     party.move(coppr)
-    run_season(lockh)
+    jezze_move(lockh)
     print('~~~~ SUMMER END ~~~~')
 
     party.move(rootw)
-    run_season(lockh)
+    jezze_move(lockh)
     print('~~~~ AUTUMN END ~~~~')
 
 if __name__ == '__main__':
