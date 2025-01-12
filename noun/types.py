@@ -1,0 +1,61 @@
+from noun.noun import Noun
+from noun.token.name_list import (
+    PLACE,
+    ITEM,
+    PERSON
+)
+from Definitions import elem_string
+
+class Macro(Noun):
+    def __init__(self, name = None):
+        super().__init__(name)
+
+    def __str__(self):
+        return super().__str__() + elem_string(self.inventory)
+
+class Micro(Noun):
+    def __init__(self, name = None):
+        self._place_type = Place
+        super().__init__(name)
+
+class Place(Macro):
+    __rank = 0
+
+    def __init__(self, name = None):
+        self._name_type = PLACE
+        self._inventory_type = Noun
+        super().__init__(name = name)
+        Place.__rank += 1
+
+    @property
+    def place(self) -> 'Place':
+        return self
+
+    @Noun._place.setter
+    def _place(self, _) -> None:
+        self._Place__place = [None]
+
+class Item(Micro):
+    __rank = 0
+
+    def __init__(self, name = None):
+        self._name_type = ITEM
+        super().__init__(name = name)
+        Item.__rank += 1
+
+    @property
+    def inventory(self) -> list['Item']:
+        return [self]
+
+    @Micro._inventory.setter
+    def _inventory(self, _):
+        self._Inventory__inventory = []
+
+class Person(Macro, Micro):
+    __rank = 0
+
+    def __init__(self, name = None):
+        self._name_type = PERSON
+        self._inventory_type = Item
+        super().__init__(name = name)
+        Person.__rank += 1

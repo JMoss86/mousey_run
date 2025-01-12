@@ -1,87 +1,121 @@
 import traceback
-from NAME import TOKN as TK, TOWN as TN
-from Tokn import Tdum, Tfrn, Tgrd, Tmyr, Tpna, Tspy
-from Town import Trek
+from noun.types import Person
+from noun.types import Place
+from noun.types import Item
+from noun.token.name_list import (
+    STATTUS,
+    PLACE,
+    ITEM,
+    PERSON
+)
 
 def main():
-    lockh = Trek(TN.LOCKHAVEN)
-    elmos = Trek(TN.ELMOSS)
-    coppr = Trek(TN.COPPERWOOD)
-    rootw = Trek(TN.ROOTWALLOW)
+    place = Place(PLACE.ELMOSS)
+    item = Item(ITEM.PANACEA)
+    person = Person(PERSON.PARTY)
 
-    elmos.add_infc()
+    def print_place(): print(f'\n{place}')
 
-    stdrd = [coppr, rootw]
-    specl = [rootw, elmos]
+    person.set_place(place)
 
-    agnts = [
-        party := Tgrd(TK.PARTY),
-        jezze := Tgrd(TK.JEZZEBELLE)
-    ]
-    tokns = [
-        justn := Tdum(TK.JUSTIN, specl),
-        mtrap := Tgrd(TK.MOUSETRAP, stdrd),
-        trevr := Tgrd(TK.TREVER, specl),
-        charl := Tmyr(TK.CHARLES, stdrd, agnts),
-        rabbt := Tfrn(TK.RABBIT, stdrd),
-        creek := Tspy(TK.CREEK, stdrd[::-1]),
-        panac := Tpna(TK.PANACEA, specl)
-    ]
+    print_place()
 
-    for tgrd in [party, jezze, mtrap, trevr]:
-        tgrd.set_base(lockh)
+    person.add_inventory(item)
 
-    lockh.add_tkns([
-        party,
-        jezze,
-        justn,
-        mtrap,
-        creek,
-        panac
-    ])
-    elmos.add_tkns(charl)
-    coppr.add_tkns(trevr)
-    rootw.add_tkns(rabbt)
+    print_place()
 
-    def dspl() -> None:
-        print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
-    def move_tks() -> None:
-        for tokn in tokns:
-            tokn.move()
-            dspl()
-    def rset_all() -> None:
-        for agnt in agnts:
-            agnt.rset()
-            dspl()
-        for tokn in tokns:
-            tokn.rset()
-            dspl()
-    def run_season() -> None:
-        move_tks()
-        rset_all()
-    def jezze_move(trek: Trek) -> None:
-        dspl()
-        jezze.move(trek)
-        dspl()
-        run_season()
+    person.add_stattus(STATTUS.INFECTED)
 
-    dspl()
-    print('~~~~ WINTER END ~~~~')
+    print_place()
 
-    party.move(elmos)
-    jezze_move(lockh)
-    print('~~~~ SPRING END ~~~~')
+    place.activate()
 
-    party.move(coppr)
-    jezze_move(lockh)
-    print('~~~~ SUMMER END ~~~~')
-
-    party.move(rootw)
-    jezze_move(lockh)
-    print('~~~~ AUTUMN END ~~~~')
+    print('\nEND')
 
 if __name__ == '__main__':
     try:
         main()
     except Exception:
         print(traceback.format_exc())
+
+# import traceback
+# from NAME import TOKN as TK, TOWN as TN
+# from Tokn import Tdum, Tfrn, Tgrd, Tmyr, Tpna, Tspy
+# from Town import Trek
+
+# def main():
+#     lockh = Trek(TN.LOCKHAVEN)
+#     elmos = Trek(TN.ELMOSS)
+#     coppr = Trek(TN.COPPERWOOD)
+#     rootw = Trek(TN.ROOTWALLOW)
+
+#     elmos.add_infc()
+
+#     stdrd = [coppr, rootw]
+#     specl = [rootw, elmos]
+
+#     agnts = [
+#         party := Tgrd(TK.PARTY),
+#         jezze := Tgrd(TK.JEZZEBELLE)
+#     ]
+#     tokns = [
+#         justn := Tdum(TK.JUSTIN, specl),
+#         mtrap := Tgrd(TK.MOUSETRAP, stdrd),
+#         trevr := Tgrd(TK.TREVER, specl),
+#         charl := Tmyr(TK.CHARLES, stdrd, agnts),
+#         rabbt := Tfrn(TK.RABBIT, stdrd),
+#         creek := Tspy(TK.CREEK, stdrd[::-1]),
+#         panac := Tpna(TK.PANACEA, specl)
+#     ]
+
+#     for tgrd in [party, jezze, mtrap, trevr]:
+#         tgrd.set_base(lockh)
+
+#     lockh.add_tkns([
+#         party,
+#         jezze,
+#         justn,
+#         mtrap,
+#         creek,
+#         panac
+#     ])
+#     elmos.add_tkns(charl)
+#     coppr.add_tkns(trevr)
+#     rootw.add_tkns(rabbt)
+
+#     def dspl() -> None:
+#         print(f'~~~~\n{lockh}\n\n{elmos}\n\n{coppr}\n\n{rootw}\n~~~~')
+#     def move_tks() -> None:
+#         for tokn in tokns:
+#             tokn.move()
+#             dspl()
+#     def rset_all() -> None:
+#         for agnt in agnts:
+#             agnt.rset()
+#             dspl()
+#         for tokn in tokns:
+#             tokn.rset()
+#             dspl()
+#     def run_season() -> None:
+#         move_tks()
+#         rset_all()
+#     def jezze_move(trek: Trek) -> None:
+#         dspl()
+#         jezze.move(trek)
+#         dspl()
+#         run_season()
+
+#     dspl()
+#     print('~~~~ WINTER END ~~~~')
+
+#     party.move(elmos)
+#     jezze_move(lockh)
+#     print('~~~~ SPRING END ~~~~')
+
+#     party.move(coppr)
+#     jezze_move(lockh)
+#     print('~~~~ SUMMER END ~~~~')
+
+#     party.move(rootw)
+#     jezze_move(lockh)
+#     print('~~~~ AUTUMN END ~~~~')
