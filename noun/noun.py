@@ -12,9 +12,6 @@ class Noun(Token, Place, Inventory):
         return self.__rank
 
     def _update_inventory_place(self) -> None:
-        '''
-        If the calling object has true inventory, update true place of each inventory item.
-        '''
         for item in self._inventory:
             # getattr(item, 'set_place')(self.place)
             setattr(item, '_place', self.place)
