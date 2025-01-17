@@ -16,6 +16,8 @@ def main():
 
     def print_place(): print(f'\n{place}')
 
+    print_place()
+
     person.set_place(place)
 
     print_place()
