@@ -14,15 +14,15 @@ class Place():
         super().__init__()
 
     @property
-    def _place(self) -> list['Place']:
+    def _place(self) -> list[Token]:
         return self.__place
 
     @property
-    def place(self) -> 'Place':
+    def place(self) -> Token:
         return self._place[0]
 
     @_place.setter
-    def _place(self, place: 'Place') -> None:
+    def _place(self, place: Token) -> None:
         if name_elem_is_type(self, INACTIVE): return
         self.__place = validated_elem_list(
             place,
@@ -31,7 +31,7 @@ class Place():
             invalid_type = None
         )
 
-    def set_place(self, place: 'Place') -> bool:
+    def set_place(self, place: Token) -> bool:
         # if self.place == place: return False
         # self._place = place
         # return True
