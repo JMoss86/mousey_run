@@ -64,5 +64,5 @@ def sub_elem_list(
 
 def update_inventory_place(self) -> None:
     for item in elem(self, '_inventory'):
-        # getattr(item, 'set_place')(elem(self, 'place'))
-        setattr(item, '_place', elem(self, 'place'))
+        getattr(item, 'set_place')(elem(self, 'place'))
+        # setattr(item, '_place', elem(self, 'place'))
