@@ -2,7 +2,8 @@ from noun.token.name_list import NAME, NONE
 from Definitions import (
     elem,
     elem_is_type,
-    validated_elem_list
+    validated_elem_list,
+    set_elem
 )
 
 class Name():
@@ -27,6 +28,9 @@ class Name():
         )
 
     def set_name(self, name: NAME | list[NAME]) -> bool:
-        if not elem_is_type(self.name, NONE): return False
-        self._name = name
-        return True
+        return set_elem(
+            self,
+            elem,
+            '_name',
+            false_check = not elem_is_type(self.name, NONE)
+        )

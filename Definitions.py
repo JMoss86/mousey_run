@@ -50,6 +50,21 @@ def validated_elem_list(
         num_lists
     )
 
+def set_elem(
+    self,
+    elem: E,
+    attr_name: 'str',
+    *,
+    false_check: callable
+):
+    if false_check: return False
+    setattr(
+        self,
+        attr_name,
+        elem
+    )
+    return True
+
 def add_elem_list(
     self,
     elem: E | list[E],

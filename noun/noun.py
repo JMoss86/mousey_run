@@ -2,6 +2,7 @@ from noun.token.token import Token
 from noun.attrs.place import Place
 from noun.attrs.inventory import Inventory
 from noun.token.name_list import NAME
+from Definitions import elem
 
 class Noun(Token, Place, Inventory):
     def __init__(self, name: NAME | list[NAME] | None = None):
@@ -20,7 +21,7 @@ class Noun(Token, Place, Inventory):
     def add_inventory(self, inventory: 'Noun | list[Noun]') -> None:
         super().add_inventory(inventory)
         for item in self._inventory:
-            getattr(item, 'set_place')(self.place)
+            elem(item, 'set_place')(self.place)
 
     def activate(self) -> bool:
         if not super().activate(): return False
