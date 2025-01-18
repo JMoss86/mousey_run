@@ -19,6 +19,8 @@ def main():
 
     def print_place(): print(f'\n{place}')
 
+    def print_is_equal(this, that): print(f'\n{this} is equivalent to {that}: {this == that}')
+
     print_place()
 
     person.set_place(place)
@@ -35,11 +37,11 @@ def main():
 
     place.activate()
 
-    print(f'\n{place == place}')
+    print_is_equal(place, place)
 
-    print(f'\n{place == Place(PLACE.ELMOSS)}')
+    print_is_equal(place, Place(PLACE.ELMOSS))
 
-    print(f'\n{place == PLACE.ELMOSS}')
+    print_is_equal(place, PLACE.ELMOSS)
 
     print('\nEND')
 
