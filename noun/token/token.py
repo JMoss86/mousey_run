@@ -1,7 +1,7 @@
 from noun.token.dunders.element import Element
 from noun.token.attrs.name import Name
 from noun.token.attrs.stattus import Stattus
-from noun.token.name_list import INACTIVE
+from noun.token.name_list import NAME, INACTIVE
 from Definitions import (
     elem,
     elem_string,
@@ -11,11 +11,11 @@ from Definitions import (
 class Token(Element, Name, Stattus):
     __rank = 0
 
-    def __init__(self, name = None):
+    def __init__(self, name: NAME | list[NAME] | None = None) -> None:
         super().__init__(name = name)
         Token.__rank += 1
 
-    def __str__(self):
+    def __str__(self) -> str:
         return super().__str__() + elem_string(self.stattus)
 
     def activate(self) -> bool:

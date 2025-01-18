@@ -11,7 +11,7 @@ from Definitions import (
 inventory_type = '_inventory_type'
 
 class Inventory():
-    def __init__(self):
+    def __init__(self) -> None:
         self._inventory = None
         super().__init__()
 
@@ -24,12 +24,12 @@ class Inventory():
         return self._inventory
 
     @_inventory.setter
-    def _inventory(self, inventory) -> None:
+    def _inventory(self, inventory: Token | list[Token]) -> None:
         if name_elem_is_type(self, INACTIVE): return
         self.__inventory = validated_elem_list(inventory, elem(self, inventory_type) or Token)
 
-    def add_inventory(self, inventory):
+    def add_inventory(self, inventory: Token | list[Token]):
         add_elem_list(self, inventory, '_inventory')
 
-    def sub_inventory(self, inventory):
+    def sub_inventory(self, inventory: Token | list[Token]):
         sub_elem_list(self, inventory, '_inventory')

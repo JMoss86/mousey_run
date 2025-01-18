@@ -61,8 +61,3 @@ def sub_elem_list(
     attr_name: str
 ) -> 'None':
     if elem and has_elem(self, elem, attr_name): sub_elem(self, elem, attr_name)
-
-def update_inventory_place(self) -> None:
-    for item in elem(self, '_inventory'):
-        getattr(item, 'set_place')(elem(self, 'place'))
-        # setattr(item, '_place', elem(self, 'place'))

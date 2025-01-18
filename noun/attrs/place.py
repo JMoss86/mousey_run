@@ -22,7 +22,7 @@ class Place():
         return self._place[0]
 
     @_place.setter
-    def _place(self, place: Token) -> None:
+    def _place(self, place: Token | list[Token]) -> None:
         if name_elem_is_type(self, INACTIVE): return
         self.__place = validated_elem_list(
             place,
@@ -31,8 +31,5 @@ class Place():
             invalid_type = None
         )
 
-    def set_place(self, place: Token) -> bool:
-        # if self.place == place: return False
-        # self._place = place
-        # return True
+    def set_place(self, place: Token | list[Token]) -> None:
         if self.place != place: self._place = place

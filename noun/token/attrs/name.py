@@ -6,7 +6,7 @@ from Definitions import (
 )
 
 class Name():
-    def __init__(self, name: NAME = None):
+    def __init__(self, name: NAME | list[NAME] | None = None) -> None:
         self._name = name
         super().__init__()
 
@@ -19,13 +19,13 @@ class Name():
         return self._name[0]
 
     @_name.setter
-    def _name(self, name) -> None:
+    def _name(self, name: NAME | list[NAME]) -> None:
         self.__name = validated_elem_list(
             name or NONE.NONE,
             elem(self, '_name_type') or NAME,
             invalid_type = NONE.INVALID
         )
 
-    def init_name(self, name) -> None:
+    def init_name(self, name: NAME | list[NAME]) -> None:
         if not elem_is_type(self.name, NONE): return
         self._name = name
