@@ -39,12 +39,11 @@ def validated_elem_list(
     
     If `elem`/s not valid `elem_type`; returns `num_lists` 'invalid_type' list/s; minimum one list.
     '''
-    if elem_is_all(elem, elem_type): return num_lists_elem_lists(
+    return num_lists_elem_lists(
         elem,
         max(1, num_lists),
         none_type
-    )
-    return minimum_num_elem_lists(
+    ) if elem_is_all(elem, elem_type) else minimum_num_elem_lists(
         invalid_type,
         1,
         num_lists
