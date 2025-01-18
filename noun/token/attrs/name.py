@@ -26,6 +26,7 @@ class Name():
             invalid_type = NONE.INVALID
         )
 
-    def init_name(self, name: NAME | list[NAME]) -> None:
-        if not elem_is_type(self.name, NONE): return
+    def set_name(self, name: NAME | list[NAME]) -> bool:
+        if not elem_is_type(self.name, NONE): return False
         self._name = name
+        return True

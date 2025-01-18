@@ -1,4 +1,5 @@
 import traceback
+from noun.noun import Noun
 from noun.types import Person
 from noun.types import Place
 from noun.types import Item
@@ -10,6 +11,8 @@ from noun.token.name_list import (
 )
 
 def main():
+    noun = Noun()
+    test = Place(ITEM.PANACEA)
     place = Place(PLACE.ELMOSS)
     item = Item(ITEM.PANACEA)
     person = Person(PERSON.PARTY)
@@ -31,6 +34,12 @@ def main():
     print_place()
 
     place.activate()
+
+    print(f'\n{place == place}')
+
+    print(f'\n{place == Place(PLACE.ELMOSS)}')
+
+    print(f'\n{place == PLACE.ELMOSS}')
 
     print('\nEND')
 

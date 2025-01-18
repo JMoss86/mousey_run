@@ -12,15 +12,15 @@ class Noun(Token, Place, Inventory):
     def _rank(self) -> int:
         return self.__rank
 
-    def set_place(self, place: 'Noun'):
-        super().set_place(place)
+    def set_place(self, place: 'Noun') -> bool:
+        if not super().set_place(place): return False
         place.add_inventory(self)
+        return True
 
     def add_inventory(self, inventory: 'Noun | list[Noun]') -> None:
         super().add_inventory(inventory)
         for item in self._inventory:
-            # getattr(item, 'set_place')(self.place)#elem(self, 'place'))
-            setattr(item, '_place', self.place)
+            getattr(item, 'set_place')(self.place)
 
     def activate(self) -> bool:
         if not super().activate(): return False

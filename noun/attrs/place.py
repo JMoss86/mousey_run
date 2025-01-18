@@ -31,5 +31,7 @@ class Place():
             invalid_type = None
         )
 
-    def set_place(self, place: Token | list[Token]) -> None:
-        if self.place != place: self._place = place
+    def set_place(self, place: Token | list[Token]) -> bool:
+        if self.place == place: return False
+        self._place = place
+        return True
