@@ -7,8 +7,6 @@ from Definitions import (
     validated_elem_list
 )
 
-place_type = '_place_type'
-
 class Place():
     def __init__(self):
         self._place = None
@@ -27,7 +25,7 @@ class Place():
         if name_elem_is_type(self, INACTIVE): return
         self.__place = validated_elem_list(
             place or None,
-            elem(self, place_type) or Token,
+            elem(self, '_place_type') or Token,
             none_type = None
         )
 
