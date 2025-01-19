@@ -3,9 +3,9 @@ from noun.token.name_list import INACTIVE
 from Definitions import (
     elem,
     name_elem_is_type,
-    validated_elem_list,
     add_elem_list,
-    sub_elem_list
+    sub_elem_list,
+    validated_elem_list
 )
 
 inventory_type = '_inventory_type'
@@ -26,7 +26,7 @@ class Inventory():
     @_inventory.setter
     def _inventory(self, inventory: Token | list[Token]) -> None:
         if name_elem_is_type(self, INACTIVE): return
-        self.__inventory = validated_elem_list(inventory, elem(self, inventory_type) or Token)
+        self.__inventory = validated_elem_list(inventory or [], elem(self, inventory_type) or Token)
 
     def add_inventory(self, inventory: Token | list[Token]):
         add_elem_list(self, inventory, '_inventory')

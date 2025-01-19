@@ -3,8 +3,8 @@ from noun.token.name_list import INACTIVE
 from Definitions import (
     elem,
     name_elem_is_type,
-    validated_elem_list,
-    set_elem
+    set_elem_unless,
+    validated_elem_list
 )
 
 place_type = '_place_type'
@@ -26,16 +26,15 @@ class Place():
     def _place(self, place: Token | list[Token]) -> None:
         if name_elem_is_type(self, INACTIVE): return
         self.__place = validated_elem_list(
-            place,
+            place or None,
             elem(self, place_type) or Token,
-            none_type = None,
-            invalid_type = None
+            none_type = None
         )
 
     def set_place(self, place: Token | list[Token]) -> bool:
-        return set_elem(
+        return set_elem_unless(
+            self.place == place,
             self,
             place,
-            '_place',
-           false_check = self.place == place 
+            '_place'
         )

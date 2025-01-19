@@ -1,9 +1,9 @@
 from noun.token.name_list import STATTUS, INACTIVE
 from Definitions import (
     name_elem_is_type,
-    validated_elem_list,
     add_elem_list,
-    sub_elem_list
+    sub_elem_list,
+    validated_elem_list
 )
 
 class Stattus():
@@ -22,7 +22,7 @@ class Stattus():
     @_stattus.setter
     def _stattus(self, stattus: STATTUS | list[STATTUS]) -> None:
         if name_elem_is_type(self, INACTIVE): return
-        self.__stattus = validated_elem_list(stattus, STATTUS)
+        self.__stattus = validated_elem_list(stattus or [], STATTUS)
 
     def add_stattus(self, stattus: STATTUS | list[STATTUS]) -> None:
         add_elem_list(self, stattus, '_stattus')

@@ -2,9 +2,11 @@ from noun.token.name_list import NAME, NONE
 from Definitions import (
     elem,
     elem_is_type,
-    validated_elem_list,
-    set_elem
+    set_elem_unless,
+    validated_elem_list
 )
+
+none = NONE.NONE
 
 class Name():
     def __init__(self, name: NAME | list[NAME] | None = None) -> None:
@@ -22,15 +24,15 @@ class Name():
     @_name.setter
     def _name(self, name: NAME | list[NAME]) -> None:
         self.__name = validated_elem_list(
-            name or NONE.NONE,
+            name or none,
             elem(self, '_name_type') or NAME,
-            invalid_type = NONE.INVALID
+            none_type = none
         )
 
     def set_name(self, name: NAME | list[NAME]) -> bool:
-        return set_elem(
+        return set_elem_unless(
+            not elem_is_type(self.name, none),
             self,
             elem,
-            '_name',
-            false_check = not elem_is_type(self.name, NONE)
+            '_name'
         )

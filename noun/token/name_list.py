@@ -5,13 +5,12 @@ class NAME(Element, Enum):
     pass
 
 class NONE(NAME):
-    NONE = auto()       ## Valid
-    INVALID = auto()    ## Invalid :-P
+    NONE = auto()
 
 class INACTIVE(NAME):
-    DEAD = auto()       ## Person
     RUINED = auto()     ## Place
     USED = auto()       ## Thing
+    DEAD = auto()       ## Person
 
 class STATTUS(NAME):
     INFECTED = auto()   ## Person/Place
