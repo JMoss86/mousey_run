@@ -8,8 +8,6 @@ from Definitions import (
     validated_elem_list
 )
 
-inventory_type = '_inventory_type'
-
 class Inventory():
     def __init__(self) -> None:
         self._inventory = None
@@ -26,7 +24,7 @@ class Inventory():
     @_inventory.setter
     def _inventory(self, inventory: Token | list[Token]) -> None:
         if name_elem_is_type(self, INACTIVE): return
-        self.__inventory = validated_elem_list(inventory or [], elem(self, inventory_type) or Token)
+        self.__inventory = validated_elem_list(inventory or [], elem(self, '_inventory_type') or Token)
 
     def add_inventory(self, inventory: Token | list[Token]):
         add_elem_list(self, inventory, '_inventory')
