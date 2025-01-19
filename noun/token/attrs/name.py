@@ -33,6 +33,6 @@ class Name():
         return set_elem_unless(
             not elem_is_type(self.name, none),
             self,
-            elem,
+            name,
             '_name'
         )
