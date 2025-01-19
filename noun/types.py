@@ -2,7 +2,8 @@ from noun.noun import Noun
 from noun.token.name_list import (
     PLACE,
     ITEM,
-    PERSON
+    PERSON,
+    INACTIVE
 )
 from noun.token.name_list import NAME
 from Definitions import elem_string
@@ -25,6 +26,7 @@ class Place(Macro):
     def __init__(self, name: PLACE | list[PLACE] | None = None):
         self._name_type = PLACE
         self._inventory_type = Noun
+        self._inactive_type = INACTIVE.RUINED
         super().__init__(name = name)
         Place.__rank += 1
 
@@ -41,6 +43,7 @@ class Item(Micro):
 
     def __init__(self, name: ITEM | list[ITEM] | None = None):
         self._name_type = ITEM
+        self._inactive_type = INACTIVE.USED
         super().__init__(name = name)
         Item.__rank += 1
 
@@ -58,5 +61,6 @@ class Person(Macro, Micro):
     def __init__(self, name: PERSON | list[PERSON] | None = None):
         self._name_type = PERSON
         self._inventory_type = Item
+        self._inactive_type = INACTIVE.DEAD
         super().__init__(name = name)
         Person.__rank += 1
