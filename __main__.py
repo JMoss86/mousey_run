@@ -64,8 +64,6 @@ def main():
 
     do_not_activate(person)
 
-    do_not_activate(item)
-
     display_is_equal(place, place)
 
     display_is_equal(place, Place(PLACE.ELMOSS))
