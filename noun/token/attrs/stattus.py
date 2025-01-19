@@ -17,7 +17,7 @@ class Stattus():
 
     @property
     def stattus(self) -> list[STATTUS]:
-        return self._stattus
+        return self._stattus if not name_elem_is_type(self, INACTIVE) else []
 
     @_stattus.setter
     def _stattus(self, stattus: STATTUS | list[STATTUS]) -> None:
