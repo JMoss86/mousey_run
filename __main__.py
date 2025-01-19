@@ -4,7 +4,6 @@ from noun.types import Person
 from noun.types import Place
 from noun.types import Item
 from noun.token.name_list import (
-    INACTIVE,
     STATTUS,
     PLACE,
     ITEM,
@@ -12,33 +11,44 @@ from noun.token.name_list import (
 )
 
 def main():
+    def display(this): print(f'\n{this}')
+    def display_is_equal(this, that): print(f'\n{this} is equivalent to {that}: {this == that}')
+    def display_set_name(this: Noun, that): print(f'\n{this}{'' if this.set_name(that) else ' did not'} set name to {that}')
+    def do_not_activate(this: Noun): print(f'\n{this} did not activate.') if not this.activate() else None
+
     blank = Noun()
-    wrong = Place(ITEM.PANACEA)
+    wrong = Place(ITEM.PANACEA)    
     place = Place(PLACE.ELMOSS)
     item = Item(ITEM.PANACEA)
     person = Person(PERSON.PARTY)
 
-    def print_place(): print(f'\n{place}')
+    display_is_equal(blank, wrong)
 
-    def print_is_equal(this, that): print(f'\n{this} is equivalent to {that}: {this == that}')
+    do_not_activate(blank)
 
-    def do_not_active(this: Noun): print(f'\n{this} did not activate.') if not this.activate() else None
+    display_set_name(blank, STATTUS.LOCKED)
 
-    print_place()
+    blank.activate()
+
+    display_set_name(wrong, PLACE.LOCKHAVEN)
+
+    display_set_name(wrong, PERSON.JEZZEBELLE)
+
+    display_is_equal(blank, wrong)
+
+    display(place)
 
     person.set_place(place)
 
-    print_place()
+    display(place)
 
     person.add_inventory(item)
 
-    print_place()
+    display(place)
 
     person.add_stattus(STATTUS.INFECTED)
 
-    print_place()
-
-    do_not_active(blank)
+    display(place)
 
     place.activate()
 
@@ -46,27 +56,25 @@ def main():
 
     place.activate()
 
-    do_not_active(item)
+    do_not_activate(item)
 
     person.deactivate()
 
     place.activate()
 
-    do_not_active(person)
+    do_not_activate(person)
 
-    do_not_active(item)
+    do_not_activate(item)
 
-    print_is_equal(blank, wrong)
+    display_is_equal(place, place)
 
-    print_is_equal(place, place)
+    display_is_equal(place, Place(PLACE.ELMOSS))
 
-    print_is_equal(place, Place(PLACE.ELMOSS))
-
-    print_is_equal(place, PLACE.ELMOSS)
+    display_is_equal(place, PLACE.ELMOSS)
 
     place.deactivate()
 
-    do_not_active(place)
+    do_not_activate(place)
 
     print('\nEND')
 
