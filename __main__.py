@@ -4,6 +4,7 @@ from noun.types import Person
 from noun.types import Place
 from noun.types import Item
 from noun.token.name_list import (
+    INACTIVE,
     STATTUS,
     PLACE,
     ITEM,
@@ -11,8 +12,8 @@ from noun.token.name_list import (
 )
 
 def main():
-    noun = Noun()
-    test = Place(ITEM.PANACEA)
+    blank = Noun()
+    wrong = Place(ITEM.PANACEA)
     place = Place(PLACE.ELMOSS)
     item = Item(ITEM.PANACEA)
     person = Person(PERSON.PARTY)
@@ -20,6 +21,8 @@ def main():
     def print_place(): print(f'\n{place}')
 
     def print_is_equal(this, that): print(f'\n{this} is equivalent to {that}: {this == that}')
+
+    def do_not_active(this: Noun): print(f'\n{this} did not activate.') if not this.activate() else None
 
     print_place()
 
@@ -35,13 +38,35 @@ def main():
 
     print_place()
 
+    do_not_active(blank)
+
     place.activate()
+
+    item.deactivate()
+
+    place.activate()
+
+    do_not_active(item)
+
+    person.deactivate()
+
+    place.activate()
+
+    do_not_active(person)
+
+    do_not_active(item)
+
+    print_is_equal(blank, wrong)
 
     print_is_equal(place, place)
 
     print_is_equal(place, Place(PLACE.ELMOSS))
 
     print_is_equal(place, PLACE.ELMOSS)
+
+    place.deactivate()
+
+    do_not_active(place)
 
     print('\nEND')
 
