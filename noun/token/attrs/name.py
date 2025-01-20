@@ -24,7 +24,7 @@ class Name():
     @_name.setter
     def _name(self, name: NAME | list[NAME]) -> None:
         self.__name = validated_elem_list(
-            name or none,
+            name,
             elem(self, '_name_type') or NAME,
             none_type = none
         )

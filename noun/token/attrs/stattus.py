@@ -22,7 +22,7 @@ class Stattus():
     @_stattus.setter
     def _stattus(self, stattus: STATTUS | list[STATTUS]) -> None:
         if name_elem_is_type(self, INACTIVE): return
-        self.__stattus = validated_elem_list(stattus or [], STATTUS)
+        self.__stattus = validated_elem_list(stattus, STATTUS)
 
     def add_stattus(self, stattus: STATTUS | list[STATTUS]) -> None:
         add_elem_list(self, stattus, '_stattus')

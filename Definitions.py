@@ -40,4 +40,4 @@ def validated_elem_list(
     
     Returns `num_lists` `none_type` list/s, if `elem`/s not all `elem_type`; minimum one list.
     '''
-    return ((e := elem_list(elem if elem_is_all(elem, elem_type) else none_type)) + e * (n := max(0, num_lists - len(e))))[:n + 1]
+    return ((e := elem_list(elem or none_type if elem_is_all(elem, elem_type) else none_type)) + e * (n := max(0, num_lists - len(e))))[:n + 1]

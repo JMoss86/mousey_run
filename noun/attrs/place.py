@@ -24,7 +24,7 @@ class Place():
     def _place(self, place: Token | list[Token]) -> None:
         if name_elem_is_type(self, INACTIVE): return
         self.__place = validated_elem_list(
-            place or None,
+            place,
             elem(self, '_place_type') or Token,
             none_type = None
         )
